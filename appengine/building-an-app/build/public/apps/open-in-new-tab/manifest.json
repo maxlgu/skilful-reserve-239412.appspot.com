@@ -1,5 +1,5 @@
 {
-    "name": "Max Pay: redirect to http page",
+    "name": "Max Pay: open in a new tab",
     "icons": [{
         "src": "dog.png",
         "sizes": "600x600",
