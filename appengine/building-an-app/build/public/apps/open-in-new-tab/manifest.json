@@ -1,0 +1,8 @@
+{
+    "name": "Max Pay: redirect to http page",
+    "icons": [{
+        "src": "dog.png",
+        "sizes": "600x600",
+        "type": "image/png"
+    }]
+}
