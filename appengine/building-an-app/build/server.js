@@ -19,8 +19,14 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-  res.send('Hello from App Engine!');
+  res.status(200).links({
+    'payment-method-manifest':
+        '/static/max-payment-method/payment-manifest.json',
+  });
+  res.send('This is to sent the payment-method-manifest link so that the requester can fetch the json file again.');
 });
+
+app.use('/static', express.static('public'));
 
 // Listen to the App Engine-specified port, or 8080 otherwise
 const PORT = process.env.PORT || 8080;
