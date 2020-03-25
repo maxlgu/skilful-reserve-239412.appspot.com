@@ -1,0 +1,19 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Max Pay</title>
+<script>
+function main() {
+    let img = document.createElement("img");
+    img.src = "http://www.w3schools.com/tags/smiley.gif";
+    img.setAttribute('height', '100px');
+    img.setAttribute('width', '100px');
+    let container = document.getElementById("image_container");
+    container.appendChild(img);
+}
+</script>
+<body onload="main()">
+    <h1>This is a demo of a bad payment app that load insecure (of a different origin) content after onload.</h1>
+    <div>
+        <h2>We will load an image from a foreign http origin below.</h2>
+        <div id="image_container"></div>
+    </div>
+</body>

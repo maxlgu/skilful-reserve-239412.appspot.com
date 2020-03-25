@@ -1,0 +1,57 @@
+<header>
+    <title>Max Pay experiments</title>
+    <link rel="icon" type="image/png" href="resources/dog.png">
+</header>
+<body>
+    <h1>Max Pay</h1>
+    <div>
+        <h2>Experimental Apps</h2>
+        <ul>
+            <li><a href="apps/max-nonbasiccard">max-nonbasiccard</a>: an all-inclusive non-basic card payment handler.</li>
+            <li><a href="apps/external-origin-http-content">external-origin-http-content</a>: a payment app that contains <b>http</b> content of an external origin.</li>
+            <li><a href="apps/external-origin-https-content">external-origin-https-content</a>: a payment app that contains <b>https</b> content of an external origin</li>
+            <li><a href="apps/iframe-tester">iframe</a>: a payment app that contains an iframe tester.
+            <li><a href="apps/iframe-external-http-origin">iframe-external-http-origin</a>: a payment app that contains an iframe of an external http origin</li>
+            <li><a href="apps/iframe-external-https-origin">iframe-external-https-origin</a>: a payment app that contains an iframe of an external https origin</li>
+            <li><a href="apps/iframe-local-https-origin">iframe-local-https-origin</a>: a payment app that contains an iframe of a local origin</li>
+            <li><a href="apps/insecure-content-after-onload">insecure-content-after-onload</a>: a payment app that insert an image of an http origin after onload.</li>
+            <li><a href="apps/load-end-security-check">load-end-security-check</a>: a payment app that has contains an image of an external http origin but does not trigger insecure content alert because the app uses long polling to block the page from finish. This app demos how circumventing the security check is possible.</li>
+            <li><a href="apps/navigation-tester">navigation</a>: a payment app that contains a navigation tester.
+            <li><a href="apps/open-in-new-tab">open-in-new-tab</a>: a payment app that opens a url in a new window.</li>
+            <li><a href="apps/open-window-external-origin">open-window-external-origin</a>: a payment app that calls openWindow for an external https url as a payment app url. </li>
+            <li><a href="apps/open-window-nonexistent-url">open-window-nonexistent-url</a>: a payment app that calls openWindow for an non-existent https url as a payment app url. </li>
+            <li><a href="apps/permissions">permissions</a>: a payment app that request permissions</li>
+            <li><a href="apps/redirect">redirect</a>: a payment app that redirects itself to a http url.</li>
+            <li><a href="apps/redirect-same-origin">redirect-same-origin</a>: a payment app that redirects itself to a url of the local origin.</li>
+            <li><a href="apps/theme-color">theme-color</a>: an app that paints the toolbar into black.</li>
+            <li><a href="apps/gpay-fail">gpay-fail</a>: merchant fails the gpay.</li>
+            <li><a href="apps/gpay">gpay</a>: the GPay2.0 payment app.</li>
+            <li><a href="apps/pmc">pmc</a>: the app to test PaymentMethodChange event.</li>
+            <li><a href="apps/cookie">cookie</a>: the app to test cookie.</li>
+            <li><a href="apps/intersection-observer">intersection-observer</a>: intersection observer api tester</li>
+            <li><a href="apps/maxpay-bobflip">maxpay-bobflip</a>: the Bobpay app that flips the position of buttons.</li>
+        </ul>
+        <h2>Others</h2>
+        <ul>
+            <li><a href="apps/">static files</a></li>
+            <li><a href="max-payment-method/payment-manifest.json">payment-manifest.json</a>: the payment method manifest file for the Max Pay experimental apps</li>
+        </ul>
+        <h2>Resources</h2>
+        <div>
+            <ul>
+                <li>Merchant page: <a href="https://maxlgu.github.io/pr/max-nonbasiccard/">Max NonBasicCard Pay Test</a></li>
+                <li>Github: <a href="https://github.com/maxlgu/max-pay/tree/maxlg/appengine/building-an-app/build">Max Pay</a></li>
+                <li>Github: <a href="https://github.com/maxlgu/maxlgu.github.io/tree/master/pr/max-nonbasiccard">Merchants using Max Pay</a></li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <div>Debug Info:</div>
+        <div id="version"></div>
+    </div>
+    <script>
+        window.addEventListener('load', (event) => {
+          document.getElementById('version').innerText = navigator.userAgent;
+        });
+    </script>
+</body>

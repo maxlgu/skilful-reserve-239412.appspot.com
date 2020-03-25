@@ -1,0 +1,8 @@
+{
+    "name": "Max Pay: open window for a url of external origin",
+    "icons": [{
+        "src": "dog.png",
+        "sizes": "600x600",
+        "type": "image/png"
+    }]
+}

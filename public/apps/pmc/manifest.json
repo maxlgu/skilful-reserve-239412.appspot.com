@@ -1,0 +1,7 @@
+{
+    "name": "MaxPay: Payment Method Change Event Test",
+    "icons": [{
+        "src": "dog.png",
+        "sizes": "32x32"
+    }]
+}

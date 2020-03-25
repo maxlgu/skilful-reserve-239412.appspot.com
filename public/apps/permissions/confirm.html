@@ -1,0 +1,94 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Max Pay - Request permissions</title>
+<p>Click the button to check whether permissions is permitted.</p>
+<div>
+    <h1>Geolocation Permission</h1>
+    <button id="find-me">Find me</button>
+    <div><span>Status: </span><span id="geo-status"></span></div>
+    <div><span>Map link: </span><a id="map-link"></a></div>
+    <script>
+    function geoFindMe() {
+        const status = document.querySelector('#geo-status');
+        const mapLink = document.querySelector('#map-link');
+
+        mapLink.href = '';
+        mapLink.textContent = '';
+
+        function success(position) {
+            const latitude  = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            status.textContent = '';
+            mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
+            mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
+        }
+
+        function error() {
+            status.textContent = 'Unable to retrieve your location';
+        }
+
+        if (!navigator.geolocation) {
+            status.textContent = 'Geolocation is not supported by your browser';
+        } else {
+            status.textContent = 'Locating…';
+            navigator.geolocation.getCurrentPosition(success, error);
+        }
+    }
+
+    document.querySelector('#find-me').addEventListener('click', geoFindMe);
+    </script>
+</div>
+<div>
+    <h1>Notification Permission</h1>
+    <button onclick="request_notification()">Request Notification Permission</button>
+    <div><span>Status: </span><span id="notification-status"></span></div>
+    <script>
+    function request_notification() {
+        const status = document.querySelector('#notification-status');
+        Notification.requestPermission(function(result) {
+            let msg;
+            if (result === 'denied') {
+                msg = 'Permission wasn\'t granted. Allow a retry.';
+            } else if (result === 'default') {
+                msg = 'The permission request was dismissed.';
+                return;
+            }
+            msg = 'Permission was granted for notifications';
+            status.textContent = msg;
+        });
+        status.textContent = "requestPermission executed. Waiting for callback invocation.";
+    }
+    </script>
+</div>
+<div>
+    <h1>Sensors Permission</h1>
+    <button onclick="request_sensor()">Request Sensors Permission</button>
+    <div><span>Status: </span><span id="sensor-status"></span></div>
+    <script>
+        function request_sensor() {
+            const status = document.querySelector('#sensor-status');
+            let msg = "";
+            let accelerometer = null;
+            try {
+                accelerometer = new Accelerometer({ referenceFrame: 'device' });
+                accelerometer.addEventListener('error', event => {
+                    msg = "Error: " + event.error.name;
+                });
+                accelerometer.addEventListener('reading', () => {
+                    msg = "Reading accelerometer.";
+                });
+                accelerometer.start();
+                msg = "Started";
+            } catch (error) {
+
+                // Handle construction errors.
+                if (error.name) {
+                    msg = "Error: " + event.error.name;
+                } else {
+                    msg = "Error: others";
+                }
+            }
+            status.textContent = msg;
+        }
+    </script>
+</div>

@@ -1,0 +1,17 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<h1>Iframe tester</h1>
+<div>
+    <div>
+        <button onclick="iframeNavigation()">Iframe navigate!</button>
+        <span>URL: <input type="text" id="iframeUrlToGo" value="https://news.qq.com/zt2020/page/feiyan.htm"></span></div>
+    <iframe name="iframeWindow"></iframe>
+    <script>
+        function iframeNavigation() {
+            const url = document.getElementById('iframeUrlToGo').value;
+            window.frames['iframeWindow'].location = url;
+        }
+    </script>
+</div>
+<div>
+    <a href="https://skilful-reserve-239412.appspot.com/static/">Other MaxPay apps</a>
+</div>

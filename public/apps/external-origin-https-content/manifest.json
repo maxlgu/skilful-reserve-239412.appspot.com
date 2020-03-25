@@ -1,0 +1,8 @@
+{
+    "name": "Max Pay: Content of external https origin",
+    "icons": [{
+        "src": "dog.png",
+        "sizes": "600x600",
+        "type": "image/png"
+    }]
+}

@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--meta name="theme-color" content="#db5945"/*you can set a theme color for your payment handler header*/--> 
+    <title>You are paying with BobPay</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+<!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+    <!-- Theme CSS -->
+    <link href="./css/new-age.min.css" rel="stylesheet">
+    <style>
+      #content-container {
+        padding-bottom: 60px;
+      }
+
+      #footer .container {
+        height: 50px;
+        text-align: center;
+        padding-top: 7px;
+      }
+
+      .cc-icons {
+        display: inline-block;
+      }
+
+      .cc-numbers {
+        display: inline-block;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="content-container">
+      <h2>Choose how to pay with BobPay</h2>
+      <div class="list-group" id="payment-instrument-list">
+      </div>
+      <div id="detailsContainer" class="collapse">
+        <pre style="white-space: pre-wrap;" id="details"></pre>
+      </div>
+    </div>
+
+    <!-- CVC unmask modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="cvc-confirm-modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Enter this card's CVC</h4>
+          </div>
+
+          <div class="modal-body">
+            <input type="text" id="cvc-confirm-field"></input>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" id="cvc-confirm-button">Pay</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- Add Card Modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="add-card-modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Add a credit card</h4>
+          </div>
+          <div class="modal-body">
+            <input type="text" id="full-name" placeholder="Full Name"></input>
+            <input type="text" id="cc-number" placeholder="4111 1111 1111 1111"></input>
+            <input type="month" id="exp-date"></input>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" id="add-card-confirm-button" onclick="addCardConfirmed()">Confirm</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="navbar navbar-default navbar-fixed-top" id="footer">
+        <div class="container">
+          <a class="btn" role="button" data-toggle="collapse" href="#detailsContainer">Details</a>
+          <button id="cancel" type="button" class="btn btn-default">Cancel</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="bundled-card-validator.js"></script>
+    <div style="margin: 0.85em" >
+    <h1>Privacy Policy</h1>
+    <div style="width: 100%; height: 100%; border:solid 1px black;">Statement of Corporate
+Privacy Principles
+Manulife is committed to providing our customers with strong, reliable, trustworthy and forward-thinking solutions for their most significant financial decisions. This includes protecting the privacy of all personal information in our care. When handling personal information, we abide by the following Corporate Privacy Principles:
+
+Information we collect
+We collect personal information directly from you and various sources in fair and legal ways
+The information we collect about you depends on our relationship with you, but may include your name, contact information, information about how you use our products and services, and information about your preferences, demographics, and interests.
+We only collect information that is required for, or related to, providing products and services, conducting business and better understanding your needs.
+For online visitors, we may collect information such as your IP address, the type of your operating system, the time and duration of your visit to our sites, Internet locations you came from, and the web pages you visit within our sites in order to track usage and improve our websites and to improve your experience.  For more information, review our Online Privacy Statement.
+ 
+
+How we use Personal Information
+We only use or disclose your personal information for the reasons it’s collected, for other purposes you consent to, or when it is required or allowed by law. This may include sharing personal information with reinsurers, with our agents or representatives or with our service providers. In some cases, and where allowed by law, your personal information may be provided to these people, organizations, service providers and Manulife employees in jurisdictions other than where it was collected and would therefore be subject to the laws of those jurisdictions. We will not share your personal information, without your consent, with any organization outside our group of companies for the purpose of that organization marketing its products or services to you.
+In some cases, and where allowed by law, we may share your information within the Manulife group of companies in order to provide you with offers for other products or services.  You may opt out of receiving those offers.
+We may analyze your information to better understand your needs and what products, services, and promotions may be of interest to you.
+We will keep your personal information only as long as needed to satisfy the purposes for which it was collected or as required or allowed by law.
+We aim to keep our records of your personal information as accurate and up to date as is necessary to fulfill the purposes for which it is used.
+ 
+
+Safeguards
+We will protect personal information with security safeguards that are appropriate to the sensitivity of the information, in order to protect it from unauthorized access, release, modification or use.
+We are responsible for personal information in our possession, including information transferred to service providers who perform duties on our behalf. When we share personal information with our service providers, they must protect it in ways that are consistent with our privacy policies and practices.
+</div>
+</div>
+  </body>
+</html>

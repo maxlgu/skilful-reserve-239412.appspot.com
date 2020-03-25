@@ -1,0 +1,21 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Max Pay</title>
+<h1>Max Pay</h1>
+<p>This test page is to test whether cookie can be set from a tab and read from PH.</p>
+<input type="text" id="cookieText" value="This message is saved from a payment app.">
+<button onclick="saveCookie()">Save to cookie</button>
+<div><span>Saved cookie: </span><span id="loadedCookie" style="color:blue"></span></div>
+<script>
+function saveCookie() {
+  var x = document.getElementById('cookieText').value;
+  document.cookie = `savedText=${x}; Max-Age=86400; path=/`;
+  updateCookieText();
+}
+
+function updateCookieText() {
+  var x = document.cookie;
+  var div = document.getElementById('loadedCookie');
+  div.innerText = x;
+}
+updateCookieText();
+</script>

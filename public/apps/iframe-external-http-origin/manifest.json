@@ -1,0 +1,8 @@
+{
+    "name": "Max Pay: contains iframe from an external http origin",
+    "icons": [{
+        "src": "dog.png",
+        "sizes": "600x600",
+        "type": "image/png"
+    }]
+}

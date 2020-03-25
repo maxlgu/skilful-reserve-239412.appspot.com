@@ -1,0 +1,57 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Max Pay</title>
+<h1>Max Pay: intersection observer API</h1>
+<style>
+    #fixed_window {
+        position:fixed;
+        bottom:0px;
+        right:0px;
+        width: 30em;
+        height: 15em;
+        font-size:1em;
+        color:red;
+        background-color:yellow;
+        border:solid thick green;
+    }
+    #log {
+        white-space: nowrap;
+        word-wrap: break-word;
+        overflow: scroll;
+    }
+</style>
+<div id="fixed_window">
+    <div>Entries:</div>
+    <div id="log"></div>
+</div>
+<img id="area" src="dog.png" alt="The Secret Life of Pet">
+<h1>dog</h1>
+<h1>dog</h1>
+<h1>dog</h1>
+<h1>dog</h1>
+<h1>dog</h1>
+<h1>dog</h1>
+<script>
+    window.onload = () => {
+        const img = document.querySelector('#area');
+
+        let observer = new IntersectionObserver((entries, observer) => { 
+            const log = document.getElementById('log');
+            let string = 'length=' + entries.length + ', ';
+            const onlyIntersectionRect = entries.map(e=>e.intersectionRect);
+            string = string + 'intersectingRect: ' + JSON.stringify(onlyIntersectionRect);
+            entries.forEach(entry => {
+                // Each entry describes an intersection change for one observed
+                // target element:
+                //   entry.boundingClientRect
+                //   entry.intersectionRatio
+                //   entry.intersectionRect
+                //   entry.isIntersecting
+                //   entry.rootBounds
+                //   entry.target
+                //   entry.time
+            });
+            log.innerText = string + '\n'+ log.innerText;
+        });
+        observer.observe(img);
+    }
+</script>

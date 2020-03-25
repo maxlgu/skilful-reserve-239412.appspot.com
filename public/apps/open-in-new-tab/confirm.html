@@ -1,0 +1,10 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Max Pay</title>
+<h1>This is a demo of a bad payment app that open a page in a new tab.</h1>
+<button onclick="openInNewTab()">Open in new tab</button>
+<script>
+function openInNewTab() {
+  var win = window.open("/static/apps/max-nonbasiccard", '_blank');
+  win.focus();
+}
+</script>

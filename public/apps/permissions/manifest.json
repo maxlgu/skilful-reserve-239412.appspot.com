@@ -1,0 +1,8 @@
+{
+    "name": "MaxPay - Permissions",
+    "icons": [{
+        "src": "dog.png",
+        "sizes": "600x600",
+        "type": "image/png"
+    }]
+}
