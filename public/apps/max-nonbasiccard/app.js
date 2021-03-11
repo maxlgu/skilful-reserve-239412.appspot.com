@@ -32,7 +32,7 @@ self.addEventListener('paymentrequest', (evt) => {
     paymentRequestResponder = responder;
     evt.openWindow('confirm.html').then((windowClient) => {
       if (!windowClient)
-        paymentRequestResponder({methodName, details: {status: 'fail'}});
+        paymentRequestResponder({methodName, details: {status: 'fail', message: "fails to retrieve windowClient."}});
       windowClient.postMessage('windowClient is able to post message.');
     }).catch((error) => {
       paymentRequestResponder({methodName, details: {status: 'fail', message: error.message}});
