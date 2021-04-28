@@ -37,6 +37,7 @@
     <button onclick="navigator.serviceWorker.controller.postMessage('cancel')">Cancel</button>
     <button onclick="window.close()">Close Window</button>
     <button onclick="loadInsecureContent()">Load Insecure Content</button>
+    <button id=bt>Select a dir</button>
 </div>
 <div>
     <div><button onclick="window.location.href = document.getElementById('urlToGo').value;">Go!</button>
@@ -78,4 +79,8 @@ function loadInsecureContent() {
     let container = document.getElementById("image_container");
     container.appendChild(img);
 }
+bt.addEventListener('click', async () => {
+    //get a user system folder
+    await window.showDirectoryPicker();
+})
 </script>
